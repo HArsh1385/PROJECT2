@@ -63,8 +63,8 @@ The MyToken smart contract lets you create and manage a custom token with a name
 - **Network Problems:** Check the network settings in `truffle-config.js`.
 
 ## Authors
-- Naman Sinha
-  - GitHub: [@naman221462](https://github.com/naman221462)
+- Harsh Apoorva
+  - GitHub: @HArsh1385
 
 ## License
 This project is licensed under the MIT License.
