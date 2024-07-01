@@ -1,97 +1,29 @@
-# Token Creation
+PROJECT TITLE: SMART CONTRACT FOR MINTING AND BURNING TOKENS
 
-This is a Solidity Project "Token Creation" program.
+DESCRIPTION: The project is a basic implementation of an Ethereum smart contract that creates a token named "DigitalLandToken" with the abbreviation "DLToken" and the symbol "DLT". This smart contract is written in Solidity and is designed to manage the minting and burning of these tokens.
 
-## Description
+PUBLIC VARIABLES
 
-The TokenCreation project creates a token that may be burned and minted. Users can mint new tokens to a specific address to increase the Total supply of the "Skull" token (SKL)," or burn existing tokens from that address to reduce the total supply.
+tokenName: Stores the name of the token.
 
-## Getting Started
+tokenAbb: Stores the abbreviation of the token, set to "DLToken".
 
-### Executing program
+symbol: Stores the symbol of the token, set to "DLT".
 
-To run the program use Remix IDE, an Online Platform https://remix.ethereum.org/.
+totalSupply: Keeps track of the total number of tokens in circulation. Initially set to 0.
 
-Once you are on the Remix website, create a new file and save the file with a .sol extension (like TokenCreation.sol). Copy and paste the code into the file:
+MAPPING balances: A mapping that associates addresses with their respective token balances. It uses an address as the key and a uint as the value to store the balance.
 
-// SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+MINT FUNCTION The mintToken function is used to create new tokens and assign them to a specified address. It takes two parameters:
 
-contract MyToken {
+addr: The address to which the new tokens will be assigned.
 
-    // public variables here
-    string public TName = "Harsh";
-    string public TAbbrv = "Har";
-    uint public TSupply = 0;
+val: The number of tokens to be created and added to the total supply.
 
-    // mapping variable here
-    mapping( address => uint ) public balance;
+BURN FUNCTION
 
-    // mint function
-    function mint (address _addr, uint _val) public {
-        TSupply += _val;
-        balance[_addr] += _val;
-    }
+The burnToken function is used to destroy tokens from a specified address, reducing both the total supply and the balance of the address. It also takes two parameters:
 
-    // burn function
-    function burn (address _addr, uint _val) public {
-        if ( balance[_addr] >= _val ) {
-            TSupply -= _val;
-            balance[_addr] -= _val;
-        }        
-    }
-}
-Compile the code and then deploy it
-Add the address to mint/burn to add or burn the tokens.
+addr: The address from which the tokens will be burned.
 
-## Authors
-
-Anshu
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details
-- If needed, update the contract name and parameters in the `MyToken.sol` file.
-- Set up the desired Ethereum network in `truffle-config.js`.
-
-### Running the Program
-
-#### How to Compile and Deploy
-1. Compile the smart contract:
-    ```bash
-    truffle compile
-    ```
-2. Deploy the smart contract to the chosen Ethereum network:
-    ```bash
-    truffle migrate --network <network_name>
-    ```
-    Replace `<network_name>` with the network you set in `truffle-config.js`.
-
-#### How to Interact with the Smart Contract
-1. Open the Truffle console:
-    ```bash
-    truffle console --network <network_name>
-    ```
-2. Mint tokens:
-    ```javascript
-    let instance = await MyToken.deployed();
-    await instance.mint('0xYourAddress', 1000);
-    ```
-3. Burn tokens:
-    ```javascript
-    await instance.burn('0xYourAddress', 500);
-    ```
-
-## Troubleshooting
-
-### Common Issues and Fixes
-- **Not Enough Gas:** Make sure you have enough ETH to pay for gas fees.
-- **Invalid Opcode:** Check for mistakes in your contract code.
-- **Network Problems:** Check the network settings in `truffle-config.js`.
-
-## Authors
-- Harsh Apoorva
-  - GitHub: @HArsh1385
-
-## License
-This project is licensed under the MIT License.
+val: The number of tokens to be burned.
